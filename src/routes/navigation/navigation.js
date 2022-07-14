@@ -12,16 +12,16 @@ const Navigation = () => {
           </div>
         </Link>
 
-        <div className="nav-link-container">
-          <Link className="nav-link-item" to="/shop">
+        <div className="nav-links-container">
+          <Link className="nav-link" to="/shop">
             SHOP
           </Link>
 
-          <Link className="nav-link-item" to="/contact">
+          <Link className="nav-link" to="/contact">
             CONTACT
           </Link>
 
-          <Link className="nav-link-item" to="/signin">
+          <Link className="nav-link" to="/auth">
             SIGN IN
           </Link>
         </div>

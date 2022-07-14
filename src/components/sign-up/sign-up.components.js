@@ -44,7 +44,7 @@ const SignUp = () => {
   };
   return (
     <div className="sign-up-container">
-      <h2>Don't have an account</h2>
+      <h2> Don't have an account</h2>
       <span>Sign up with your email and password</span>
       <form onSubmit={handleSubmit}>
         <FromInput
@@ -66,7 +66,7 @@ const SignUp = () => {
         />
 
         <FromInput
-          lable="Password"
+          label="Password"
           type="password"
           required
           name="password"
@@ -74,7 +74,6 @@ const SignUp = () => {
           value={password}
         />
 
-        <label htmlFor="">Confrim Password</label>
         <FromInput
           label="Confrim Password"
           type="password"
