@@ -7,6 +7,7 @@ import {
 import FromInput from "../form-input/form-input.components";
 import "./sign-in.styles.scss";
 import Button from "../button/button.components";
+import { UserContext } from "../../context/user.context";
 
 const defaultFromField = {
   email: "",
@@ -16,6 +17,7 @@ const defaultFromField = {
 const SignIn = () => {
   const [formField, setFromField] = useState(defaultFromField);
   const { email, password } = formField;
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFromField({ ...formField, [name]: value });
@@ -25,8 +27,7 @@ const SignIn = () => {
   };
 
   const signInWithGoogleUser = async () => {
-    const response = await signInWithGooglePopup();
-    await createUserDocumentFromAuth(response.user);
+    await signInWithGooglePopup();
   };
 
   const handleSubmit = async (event) => {
@@ -34,7 +35,6 @@ const SignIn = () => {
 
     try {
       const res = await signInAuthWithEmailAndPassword(email, password);
-      console.log(res);
     } catch (error) {
       switch (error.code) {
         case "auth/wrong-password":
@@ -47,6 +47,7 @@ const SignIn = () => {
           console.log(error);
       }
     }
+    resetFromField();
   };
   return (
     <div className="sign-in-container">
