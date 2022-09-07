@@ -6,7 +6,7 @@ import {
 } from "../../utils/firebase/firebase";
 import FromInput from "../form-input/form-input.components";
 import "./sign-in.styles.scss";
-import Button from "../button/button.components";
+import Button, { BUTTON_TYPE_CLASSES } from "../button/button.components";
 import { UserContext } from "../../context/user.context";
 
 const defaultFromField = {
@@ -75,7 +75,7 @@ const SignIn = () => {
           <Button>Sign In</Button>
           <Button
             type="button"
-            buttonType={"google"}
+            buttonType={BUTTON_TYPE_CLASSES.google}
             onClick={signInWithGoogleUser}
           >
             Google Sign In
