@@ -16,14 +16,15 @@ export const fetchCategorySuccess = (categoriesArray) =>
 export const fetchCategoryFailed = (error) =>
   createAction(CATEGORIES_ACTION_TYPE.FETCH_CATEGORIES_FAILED, error);
 
-export const fetchCategoriesAsync = () => {
-  return async (dispatch) => {
-    dispatch(fetchCategoryStart());
-    try {
-      const categoryArray = await getCategoriesAndDocuments("categories");
-      dispatch(fetchCategorySuccess(categoryArray));
-    } catch (error) {
-      dispatch(fetchCategoryFailed(error));
-    }
-  };
-};
+//redux-thunk
+// export const fetchCategoriesAsync = () => {
+//   return async (dispatch) => {
+//     dispatch(fetchCategoryStart());
+//     try {
+//       const categoryArray = await getCategoriesAndDocuments("categories");
+//       dispatch(fetchCategorySuccess(categoryArray));
+//     } catch (error) {
+//       dispatch(fetchCategoryFailed(error));
+//     }
+//   };
+// };
