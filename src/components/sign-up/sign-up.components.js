@@ -1,4 +1,6 @@
 import { useState } from "react";
+import { useDispatch } from "react-redux";
+import { signUpStart } from "../../store/user/user.action";
 import {
   createAuthUserWithEmailAndPassword,
   createUserDocumentFromAuth,
@@ -6,7 +8,6 @@ import {
 import FromInput from "../form-input/form-input.components";
 import "./sign-up.styles.scss";
 import Button from "../button/button.components";
-import { UserContext } from "../../context/user.context";
 const defaultFromField = {
   displayName: "",
   email: "",
@@ -17,7 +18,7 @@ const defaultFromField = {
 const SignUp = () => {
   const [formField, setFromField] = useState(defaultFromField);
   const { displayName, email, password, confrimPassword } = formField;
-
+  const dispatch = useDispatch();
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFromField({ ...formField, [name]: value });
@@ -33,12 +34,7 @@ const SignUp = () => {
       return;
     }
     try {
-      const { user } = await createAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-
-      await createUserDocumentFromAuth(user, { displayName });
+      dispatch(signUpStart(email, password, displayName));
       resetFromField();
     } catch (error) {
       console.log(error);
